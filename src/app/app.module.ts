@@ -7,6 +7,7 @@ import { CardComponent } from './card/card.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { LayoutsComponent } from './layouts/layouts.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { LayoutsComponent } from './layouts/layouts.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

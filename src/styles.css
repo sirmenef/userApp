@@ -380,3 +380,6 @@ body {
 .mg-right-30 {
   margin-right: 15px;
 }
+input.ng-touch {
+  background: inherit;
+}

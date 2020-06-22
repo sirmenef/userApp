@@ -1,5 +1,6 @@
-import { UserServiceService } from './services/user-service.service';
-import { Component, OnInit } from '@angular/core';
+import {UserServiceService} from './services/user-service.service';
+import {Component, OnInit} from '@angular/core';
+import {count} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -11,44 +12,43 @@ export class AppComponent implements OnInit {
   constructor(private api: UserServiceService) {
   }
 
+  allUsers: object[] = [];
   isCountry: boolean;
   currentPage = 1;
   resultsPerPage = 3;
   users: any;
   maxPage = 7;
-  allUsers: object[];
-  CountryList: string[];
+  CountryList = [];
   pageConfig = {
     page: String(this.currentPage),
     results: String(this.resultsPerPage),
     seed: 'sammy',
   };
+  viewUser: object;
+  nav: string;
 
   ngOnInit() {
     this.loadUsers(this.pageConfig);
-    this.getAllUsers({page: '1', results: '20', seed: 'sammy'});
+    this.getAllUsers();
     this.getCountry();
     this.showCountry();
+    // console.log(this.allUsers);
+    // this.log();
   }
-
-  loadUsers(Config) {
-    this.api.loadUsers(Config).subscribe(
+  log() {
+    console.log('all users', this.allUsers, 'isCountry', this.isCountry, 'users', this.users, 'countrylist', this.CountryList);
+  }
+  async loadUsers(Config) {
+    await this.api.loadUsers(Config).subscribe(
       val => {
         if (val) {
           this.users = val.results;
         }
-        console.log(val.results);
+        // console.log(val.results);
+        console.log('users');
+        console.log(this.users);
       }
     );
-  }
-
-  getAllUsers(config: object) {
-    this.api.loadUsers(config).subscribe(res => {
-      if (!res) {
-        return;
-      }
-      this.allUsers = res;
-    });
   }
 
   downloadUsers() {
@@ -56,25 +56,20 @@ export class AppComponent implements OnInit {
   }
 
   getCountry() {
-    const objects = this.allUsers.filter(user => {
-      const country: string = user['location']['country'];
-      this.CountryList.find(x => x === country);
+    this.allUsers.forEach(user => {
+      const country = user['location']['country'];
+      if (!this.CountryList.includes(country)) {
+        this.CountryList.push(country);
+      }
     });
+    console.log(this.CountryList);
   }
 
   getUser(name: string) {
-    this.allUsers.find(x => {
-      const firstname = x['name']['first'];
-      const lastname = x['name']['last'];
-      x === firstname || lastname || `${firstname} ${lastname}`;
-    });
-  }
-  getMaleUsers() {
-
-  }
-
-  getFemaleUsers() {
-
+    let object: object;
+    object = this.allUsers.find(x => x === x['name']['first'] || x['name']['last'] || `${x['name']['first']} ${x['name']['last']}`
+    );
+    this.viewUser = object;
   }
 
   showCountry() {
@@ -87,5 +82,18 @@ export class AppComponent implements OnInit {
       val => {
         names = val.results;
       });
+  }
+
+  async getAllUsers() {
+    await this.api.loadUsers({page: '1', results: '20', seed: 'sammy'}).subscribe(res => {
+      if (res) {
+        this.allUsers = res.results;
+        // console.log(this.allUsers);
+      }
+    });
+  }
+
+  navigateUser(event) {
+    this.users = event;
   }
 }

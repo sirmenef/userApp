@@ -1,7 +1,7 @@
 <!--<router-outlet></router-outlet>-->
 
 <div class="flex">
-  <app-sidebar class="flex-content-width"></app-sidebar>
+  <app-sidebar class="flex-content-width" (setUsers)="navigateUser($event)"></app-sidebar>
   <app-main-content
     [users] = "users"
     class="flex-content-width"></app-main-content>
