@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-newcard',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewcardComponent implements OnInit {
 
+  @Input() user;
+  @Input() isCountryShown;
+  @Output() sendUser = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  checkUser(user) {
+    this.sendUser.emit(user);
+  }
 }

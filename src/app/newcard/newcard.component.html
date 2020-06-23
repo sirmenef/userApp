@@ -1,1 +1,23 @@
-<p>newcard works!</p>
+<div class="card relative">
+  <img class="img-thumbnail" [src]="user.picture.medium" alt="img-thumbnail">
+  <div class="absolute card-details">
+    <div class="relative">
+      <h2 style="margin: 20px 0 0 0; font-size: 22px/79px; font-weight: 600;">{{user.name.first}}
+        {{user.name.last}}</h2>
+      <p class="address">{{user.location.street.number + ' ' + user.location.street.name
+      + ', ' + user.location.city + ', ' + user.location.state}}</p>
+      <p [class.isHidden]="!isCountryShown" class="address ">{{user.location.country}}</p>
+      <span  class="contacts" style="margin-right: 15px;"><span class="iconify" data-icon="feather:mail"
+                                                                data-inline="false"></span> {{user.email}}
+                </span>
+
+      <span class="contacts"><span class="iconify" data-icon="feather:phone-call"
+                                   data-inline="false"></span>&nbsp; {{user.phone}}</span>
+    </div>
+
+  </div>
+  <div (click)="checkUser(user)" class="arrow  hover cursor">
+              <span class="iconify"  style="color: white; width: 20px; height: 20px; margin: 8px 0px 0 7.6px ;"
+                    data-icon="feather:arrow-right" data-inline="false"></span>
+  </div>
+</div>

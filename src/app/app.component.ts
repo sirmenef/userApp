@@ -253,7 +253,7 @@ export class AppComponent implements OnInit {
   }
 
   checkUser(user: object) {
-    // this.checkedUser = user;
-    this.filterUsers(user);
+    this.checkedUser = user;
+    console.log(user);
   }
 }
