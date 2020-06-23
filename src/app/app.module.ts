@@ -7,7 +7,8 @@ import { CardComponent } from './card/card.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainContentComponent } from './main-content/main-content.component';
 import { LayoutsComponent } from './layouts/layouts.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NewcardComponent } from './newcard/newcard.component';
 
 @NgModule({
   declarations: [
@@ -15,14 +16,16 @@ import {FormsModule} from '@angular/forms';
     CardComponent,
     SidebarComponent,
     MainContentComponent,
-    LayoutsComponent
+    LayoutsComponent,
+    NewcardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -19,14 +19,9 @@ export class AppComponent implements OnInit {
   filterByOptions: string[] = ['Country', 'Name'];
   pagetitle = 'All Users';
   currentView = 'all users';
-  filterOption: string;
   filteredUsers: object[];
-
-  currentPage = 1;
-  resultsPerPage = 3;
   users: any;
-  maxPage = 7;
-  CountryList = [];
+  checkedUser: object;
   pageConfig = {
     currentPage: 1,
     resultsPerPage: 3,
@@ -60,7 +55,6 @@ export class AppComponent implements OnInit {
     start: 0,
     end: 3,
   };
-  viewUser: object;
   nav: string;
 
   ngOnInit() {
@@ -126,17 +120,12 @@ export class AppComponent implements OnInit {
     });
   }
 
-  filterBy(options: string) {
-    this.filterOption = options;
-  }
-
-  // @ts-ignore
-  filterUsers(input: string) {
-    const val =  input['0'].toUpperCase() + input.slice(1);
-    if (this.filterOption === 'Country') {
-      this.filteredUsers = this.allUsers.filter(x => x['location']['country'].includes(input));
+  filterUsers(filtered: object) {
+    const val =  filtered['searchInput']['0'].toUpperCase() + filtered['searchInput'].slice(1);
+    if (filtered['filter'] === 'Country') {
+      this.filteredUsers = this.allUsers.filter(x => x['location']['country'].includes(val));
       this.users = this.filteredUsers.slice(0, 3);
-    } else {
+    } else if (filtered['filter'] === 'Name') {
       this.filteredUsers = this.allUsers.filter(x => x['name']['first'].includes(val) || x['name']['last'].includes(val));
       this.users = this.filteredUsers.slice(0, 3);
     }
@@ -264,22 +253,7 @@ export class AppComponent implements OnInit {
   }
 
   checkUser(user: object) {
-
-  }
-  // getCountry() {
-  //   this.allUsers.forEach(user => {
-  //     const country = user['location']['country'];
-  //     if (!this.CountryList.includes(country)) {
-  //       this.CountryList.push(country);
-  //     }
-  //   });
-  //   console.log(this.CountryList);
-  // }
-
-  getUser(name: string) {
-    // let object: object;
-    // object = this.allUsers.find(x => x === x['name']['first'] || x['name']['last'] || `${x['name']['first']} ${x['name']['last']}`
-    // );
-    // this.viewUser = object;
+    // this.checkedUser = user;
+    this.filterUsers(user);
   }
 }
