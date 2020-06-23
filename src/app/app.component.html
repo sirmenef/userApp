@@ -2,9 +2,15 @@
 
 <div class="flex">
   <app-sidebar class="flex-content-width"
-               (usersEmmiter)="loadUsers($event)"
+               (usersEmmiter)="setUserView($event)"
                (find)="search($event)"></app-sidebar>
   <app-main-content
     [users] = "users"
+    [filter-options]="filterByOptions"
+    [page-title]="pagetitle"
+    (filter)="filterUsers($event)"
+    (nav)="navigate($event)"
+    (filter-selected)="filterBy($event)"
+    (user)="checkUser($event)"
     class="flex-content-width"></app-main-content>
 </div>
