@@ -1,6 +1,5 @@
 import {UserServiceService} from './services/user-service.service';
 import {Component, OnInit} from '@angular/core';
-import {count} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -29,15 +28,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers(this.pageConfig);
-    this.getAllUsers();
-    this.getCountry();
+    // this.getAllUsers();
+    // this.getCountry();
     this.showCountry();
     // console.log(this.allUsers);
     // this.log();
   }
-  log() {
-    console.log('all users', this.allUsers, 'isCountry', this.isCountry, 'users', this.users, 'countrylist', this.CountryList);
-  }
+
   async loadUsers(Config) {
     await this.api.loadUsers(Config).subscribe(
       val => {
@@ -51,25 +48,29 @@ export class AppComponent implements OnInit {
     );
   }
 
-  downloadUsers() {
-    this.api.downloadUsers({ results: '3', seed: 'sammy', format: `csv&dl` }).subscribe();
+  search(name) {
+    // tslint:disable-next-line:no-unused-expression
+    this.api.loadUsers({page: '1', seed: 'sammy', results: '20'}).subscribe(res => {
+      this.users = res.results.filter(x => x['name']['first'].include(name) || x['name']['last'].include(name)
+      );
+    });
   }
 
-  getCountry() {
-    this.allUsers.forEach(user => {
-      const country = user['location']['country'];
-      if (!this.CountryList.includes(country)) {
-        this.CountryList.push(country);
-      }
-    });
-    console.log(this.CountryList);
-  }
+  // getCountry() {
+  //   this.allUsers.forEach(user => {
+  //     const country = user['location']['country'];
+  //     if (!this.CountryList.includes(country)) {
+  //       this.CountryList.push(country);
+  //     }
+  //   });
+  //   console.log(this.CountryList);
+  // }
 
   getUser(name: string) {
-    let object: object;
-    object = this.allUsers.find(x => x === x['name']['first'] || x['name']['last'] || `${x['name']['first']} ${x['name']['last']}`
-    );
-    this.viewUser = object;
+    // let object: object;
+    // object = this.allUsers.find(x => x === x['name']['first'] || x['name']['last'] || `${x['name']['first']} ${x['name']['last']}`
+    // );
+    // this.viewUser = object;
   }
 
   showCountry() {
@@ -88,7 +89,6 @@ export class AppComponent implements OnInit {
     await this.api.loadUsers({page: '1', results: '20', seed: 'sammy'}).subscribe(res => {
       if (res) {
         this.allUsers = res.results;
-        // console.log(this.allUsers);
       }
     });
   }
