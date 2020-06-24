@@ -1,0 +1,34 @@
+<div class="flex-column card-container">
+ <div (click)="goBack()" class="back hover cursor">
+   <span class="iconify" style="width: 20px; height: 20px;" data-icon="ant-design:arrow-left-outlined" data-inline="false"></span>
+ </div>
+  <div class="flex">
+    <div class="">
+      <img class="profile-img" [src]="user['picture']['large']" alt="user image">
+    </div>
+    <div class="">
+      <p id="profile-name">{{user['name']['title'] + '.' + ' ' + user['name']['first'] + ' ' +   user['name']['last']}}<span class="pad-left" style="opacity: .6; font-weight: normal">{{ + user['dob']['age']}}</span></p>
+      <p id="profile-address">{{user.location.street.number + ' ' + user.location.street.name
+      + ', ' + user.location.city + ', ' + user.location.state}}</p>
+      <div class="inline-block email">
+      <span class="iconify" data-icon="feather:mail"
+            data-inline="false"></span>
+        <span class="pad-left">{{user['email']}}</span>
+      </div>
+      <br>
+      <div class="inline-block joined">
+        <span style="opacity: .8; font: 500;"> Joined: {{ user['registered']['date'] | date: 'yyyy-MM-dd'}}</span>
+      </div>
+      <div class="phone">
+      <span class="iconify" data-icon="feather:phone-call"
+            data-inline="false"></span>
+        {{user['phone']}}
+      </div>
+      <div class="phone">
+        <span class="iconify" data-icon="ic:baseline-phone-iphone" data-inline="false"></span>
+        {{user['cell']}}
+
+      </div>
+    </div>
+  </div>
+</div>

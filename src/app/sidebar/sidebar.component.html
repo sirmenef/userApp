@@ -1,0 +1,55 @@
+<div class="side-container flex-column">
+  <header class="sidebar-flex">
+    <p class="welcome-size" style="font-size: 35px; font-weight: 200;">Hello, <span style="font-size: 32px;
+       font-weight: 600;">Emerald</span></p>
+    <p class="welcome-size" style="font-size: 14px; font-weight: lighter;">welcome to your dashbord, kindly sort
+      through the user base
+    </p>
+  </header>
+
+  <main class="sidebar-main sidebar-flex">
+    <form >
+      <div class="search-div relative">
+                  <span class="iconify absolute" id="search-icon" data-icon="ant-design:search-outlined" data-inline="false"
+                        style="color: white;"></span>
+        <input ngModel name="findUser" #findUser="ngModel" (keyup.enter)="searchUser(findUser.value)" class="input absolute" type="text" placeholder="Find a User" id="search-box">
+      </div>
+    </form>
+  </main>
+
+  <footer class="sidebar-flex">
+    <div class="flex-column ">
+      <p style="font-weight: bold; margin-bottom: 40px;">Show Users</p>
+      <div class="flex justify" style="width: 80%">
+        <div class="cursor" [ngClass]="{'animate': categories.one, 'de-animate': categories.de_animate_one}"
+             (click)="btnAnimate('all users'); setUserView('all users');">
+          <div class="button users">
+            <span class="iconify icon" data-icon="fa-solid:users" data-inline="false"></span>
+          </div>
+          <div class="">
+            <p class="btn-desc">All Users</p>
+          </div>
+        </div>
+        <div class="cursor" [ngClass]="{'animate': categories.two, 'de-animate': categories.de_animate_two}"
+             (click)="btnAnimate('male users'); setUserView('male')">
+          <div class="button light-blue">
+            <span class="iconify icon" data-icon="fa-solid:male" data-inline="false"></span>
+          </div>
+          <div class="">
+            <p class="btn-desc">Male Users</p>
+          </div>
+        </div>
+        <div class="cursor" [ngClass]="{'animate':categories.three, 'de-animate': categories.de_animate_three}"
+             (click)="btnAnimate('female users'); setUserView('female')">
+          <div class="button purple">
+            <span class="iconify icon" data-icon="fa-solid:female" data-inline="false"></span>
+          </div>
+          <div class="">
+            <p class="btn-desc">Female Users</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>

@@ -1,0 +1,117 @@
+.card {
+  width: inherit;
+  height: 130px;
+  /* border: none; */
+  padding-left: 25px;
+  border-radius: 28px;
+  background-color: #fff;
+  margin-top: 20px;
+  /* box-shadow: 0px 0px 3px 1px grey; */
+
+}
+
+.img-thumbnail {
+  width: 90px;
+  height: 90px;
+  border-radius: 50px;
+  border: 5px solid #30BBB5;
+  margin-top: 27px;
+}
+
+.card-details {
+  top: 0;
+  left: 140px;
+}
+
+.address {
+  font: medium;
+  font-style: italic;
+  font-size: 18px/68px;
+  letter-spacing: -0.02px;
+  opacity: 0.69;
+  margin: 5px 0;
+}
+
+.contacts {
+  font: medium;
+  font-style: italic;
+  font-size: 18px/68px;
+  letter-spacing: -0.02px;
+  opacity: 0.59;
+  margin: 5px 0;
+}
+
+.arrow {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  background: #30BBB5;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.card-container {
+  width: 85%;
+  height: 450px;
+  padding: 10px;
+}
+
+.back {
+  width: 35px;
+  height: 35px;
+  color: #30BBB5;
+  border-radius: 10px;
+}
+
+.email {
+  border-radius: 18px;
+  padding: 9px;
+  background: #DADDE4;
+  margin-bottom: 20px;
+  opacity: 0.52;
+}
+
+.joined {
+  background: rgba(249, 53, 169, .15);
+  /*opacity: .15;*/
+  padding: 9px;
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+.phone {
+  color: black;
+  opacity: 0.52;
+  margin-bottom: 10px;
+}
+
+.disabled {
+  opacity: .3;
+}
+
+.profile-img {
+  border-radius: 100px;
+  border: 5px solid #30BBB5;
+  margin: 15px;
+}
+
+#profile-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+#profile-address {
+  opacity: .7;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.pad-left {
+  padding-left: 10px;
+}
+
+.inline-block {
+  display: inline-block;
+}

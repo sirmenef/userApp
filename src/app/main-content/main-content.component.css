@@ -1,0 +1,153 @@
+#filter-box {
+  /* padding: 0 0; */
+  border: 0 solid #dadde4;
+  border-radius: 28px;
+  background-color:  #dadde4;
+  /*margin: 10px 0 0 0;*/
+  height: 35px;
+  max-width: 211px;
+  position: relative;
+  /* opacity: 0.11; */
+}
+
+.main-content {
+  background-color: #F7F7FF;
+  height: 98vh;
+  width: 98%;
+  border-radius: 28px;
+  margin: 1%;
+  margin-left: .4%;
+}
+
+.main-content-container{
+  width: 90%;
+  height: 95%;
+  margin: 3% 0 0 7%;
+  padding: 1%;
+}
+
+.title {
+  color: #262A41;
+  padding: 0;
+  margin: 0;
+}
+
+.user-container {
+  /*width: 100%;*/
+  /*height: 500px;*/
+  /*overflow: scroll;*/
+  height: 100%;
+  width: 100%;
+}
+
+#filter-search-icon{
+  width: 20px;
+  height: 20px;
+  background-color: inherit;
+  opacity: .6;
+  color: #262A41;
+  top: 8px;
+  left: 6%;
+}
+
+
+.input-filter {
+  height: 25px;
+  width: 70%;
+  padding-left: 5px;
+  background-color: inherit;
+  color: #262A41;
+  opacity: 1;
+  top: 4px;
+  left: 15%;
+  border: 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.input-filter:focus {
+  outline: none;
+  opacity: 1;
+  color: #262A41;
+}
+
+
+.select {
+  /*position: absolute;*/
+  /*top: 2%;*/
+  /*left: 73%;*/
+  /*margin-top: 1.7%;*/
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dadde4;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #30bbb5;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #30BBB5;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(18px);
+  -ms-transform: translateX(18px);
+  transform: translateX(18px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+#a-btn {
+  text-decoration: none;
+  color: white;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.checkbox {
+  margin-top: 7px;
+}
+
+.icon-pagi {
+  margin-top: 6px;
+}

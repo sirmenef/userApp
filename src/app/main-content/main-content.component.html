@@ -1,0 +1,76 @@
+
+<div class="flex-column main-content">
+  <div class="main-content-container">
+    <div class="flex-column">
+      <div class="flex-content">
+        <h2 class="title" style="color: #262A41">{{pageTitle}}</h2>
+        <p style="font-size: 16px; color: #262A41;font-weight: 300; margin-top: 8px; padding: 0">Filter by:</p>
+
+        <form [formGroup]="form" (ngSubmit)="filterInput()">
+          <div class="flex pd-TB-3" >
+
+            <div class="flex-content mg-right-30" id="filter-box">
+              <div class="relative" >
+                    <span class="iconify absolute" id="filter-search-icon" data-icon="ant-design:search-outlined" data-inline="false"
+                    ></span>
+                <input (keyup)="filterInput();" (keyup.delete)="filterInput()" formControlName="searchInput" class="input-filter absolute" type="text" placeholder="Find in the list" id="search-box">
+              </div>
+            </div>
+
+            <div id="country-box" class="country mg-right-30 flex-content">
+              <select name="filterBy" formControlName="filter" id="country" required>
+                <option *ngFor="let filterValue of filterOptions" [value]="filterValue">{{filterValue}}</option>
+              </select>
+            </div>
+
+            <div class="flex-content hover cursor checkbox" (change)="showCountry()">
+              <div class="relative">
+                <div class="">
+                  <label class="switch">
+                    <p class="p-absolute">&nbsp; Show Country</p>
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+      <div class="flex-content user-container" style="height: 100%; width: 100%;" >
+        <div *ngIf="showList; else card">
+          <app-newcard  *ngFor="let user of users"
+                        [user]="user"
+                        [isCountryShown]="isCountryShown"
+                        (sendUser)="checkUser($event)">
+          </app-newcard>
+        </div>
+        <ng-template #card>
+          <app-card [user]="selectedUser"
+                    (back)="goBack()">
+          </app-card>
+        </ng-template>
+      </div>
+      <div class="flex-content">
+        <footer class="relative">
+          <div class="btn-download hover cursor">
+            <span class="iconify icon-cloud" data-icon="bi:cloud-download-fill" data-inline="false"></span>
+            <div style="display: inline-block;">
+              <span style="margin-left: 5px; margin-top: 0px"><a id="a-btn" href="https://randomuser.me/api/?page=1&results=20&seed=sammy&format=csv">Download Results</a></span>
+            </div>
+          </div>
+          <div class="absolute" id="btn-pagination" [ngClass]="{'disabled': isDisabled}">
+            <div (click)="navigator('prev')" class="left hover cursor inline">
+              <span class="iconify icon-pagi" data-icon="ic:baseline-keyboard-arrow-left" data-inline="false"></span>
+            </div>
+            <div (click)="navigator('next')" class="right hover cursor inline">
+              <span class="iconify icon-pagi" data-icon="ic:baseline-keyboard-arrow-right" data-inline="false"></span>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
