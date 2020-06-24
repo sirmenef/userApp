@@ -72,8 +72,6 @@ export class AppComponent implements OnInit {
         if (val) {
           this.users = val.results;
         }
-        console.log('users');
-        console.log(this.users);
       }
     );
   }
